@@ -1,0 +1,2 @@
+add_executable(test_dvector test_dvector.cxx)
+target_link_libraries(test_dvector gtest dvector)
