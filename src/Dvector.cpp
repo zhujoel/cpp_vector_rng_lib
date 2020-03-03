@@ -92,16 +92,174 @@ void Dvector::fillRandomly(){
 }
 
 double& Dvector::operator()(int index) const{
-    if(index < 0 || index > (int)this->dim){
+    if(index < 0 || index >= (int)this->dim){
         // TODO: Compléter l'exception
         throw;
     }
     return this->values[index];
 }
 
+// opérateurs +=, -=, *=, /=
 Dvector& Dvector::operator+=(double d){
     for(unsigned int i = 0; i < this->dim; ++i){
-        this->values[i] = 5 + d;
+        this->values[i] += d;
     }
     return *this;
+}
+
+Dvector& Dvector::operator-=(double d){
+    for(unsigned int i = 0; i < this->dim; ++i){
+        this->values[i] -= d;
+    }
+    return *this;
+}
+
+Dvector& Dvector::operator*=(double d){
+    for(unsigned int i = 0; i < this->dim; ++i){
+        this->values[i] *= d;
+    }
+    return *this;
+}
+
+Dvector& Dvector::operator/=(double d){
+    if(d == 0){
+        // TODO: compléter exception
+        throw;
+    }
+    for(unsigned int i = 0; i < this->dim; ++i){
+        this->values[i] /= d;
+    }
+    return *this;
+}
+
+Dvector& Dvector::operator+=(const Dvector &Q){
+    if(Q.size() != this->dim){
+        // TODO: compléter exception
+        throw;
+    }
+    for(unsigned int i = 0; i < this->dim; ++i){
+        this->values[i] += Q(i);
+    }
+    return *this;
+}
+
+Dvector& Dvector::operator-=(const Dvector &Q){
+    if(Q.size() != this->dim){
+        // TODO: compléter exception
+        throw;
+    }
+    for(unsigned int i = 0; i < this->dim; ++i){
+        this->values[i] -= Q(i);
+    }
+    return *this;
+}
+
+// opérateurs +, -, *, /
+Dvector Dvector::operator+(double d) const{
+    Dvector Q(*this);
+    Q += d;
+    return Q;
+}
+
+Dvector Dvector::operator-(double d) const{
+    Dvector Q(*this);
+    Q -= d;
+    return Q;
+}
+
+Dvector Dvector::operator*(double d) const{
+    Dvector Q(*this);
+    Q *= d;
+    return Q;
+}
+
+Dvector Dvector::operator/(double d) const{
+    if(d == 0){
+        // TODO: compléter exception 
+        throw;
+    }
+    Dvector Q(*this);
+    Q /= d;
+    return Q;
+}
+
+Dvector Dvector::operator+(const Dvector &Q) const{
+    if(Q.size() != this->dim){
+        // TODO: compléter exception
+        throw;
+    }
+    Dvector P(*this);
+    P += Q;
+    return P;
+}
+
+Dvector Dvector::operator-(const Dvector &Q) const{
+    if(Q.size() != this->dim){
+        // TODO: compléter exception
+        throw;
+    }
+    Dvector P(*this);
+    P -= Q;
+    return P;
+}
+
+// - unaire
+Dvector& Dvector::operator-(){
+    for(unsigned int i = 0; i < this->dim; ++i){
+        this->values[i] = -this->values[i];
+    }
+    return *this;
+}
+
+bool Dvector::operator==(const Dvector &Q) const{
+    if (this->dim != Q.size()){
+        return false;
+    }
+    for(unsigned int i = 0; i < this->dim; ++i){
+        if (this->values[i] != Q(i)){
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Dvector::operator!=(const Dvector &Q) const{
+    return !(*this==Q);
+}
+
+void Dvector::resize(unsigned int newDim, double value){
+    if (this->dim < newDim){
+        double *tmp_values = new double[newDim];
+        
+        for(unsigned int i = 0; i < this->dim; ++i){
+            tmp_values[i] = this->values[i];
+        }
+
+        for(unsigned int i = this->dim; i < newDim; ++i){
+            tmp_values[i] = value;
+        }
+
+        delete []this->values;
+        this->values = tmp_values;
+        this->dim = newDim;
+
+    } else if (this->dim > newDim) {
+        this->dim = newDim;
+    } else {
+        // TODO: Compléter l'exception
+        throw;
+    }
+}
+
+// opérateurs externes
+Dvector operator+(const double &d, const Dvector &Q){
+    Dvector P(Q);
+    P += d;
+    return P;
+}
+
+Dvector operator*(const double &d, const Dvector &Q){
+    Dvector P(Q);
+    P *= d;
+    return P;
 }

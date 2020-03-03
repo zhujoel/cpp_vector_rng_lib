@@ -17,20 +17,40 @@ class Dvector{
         Dvector(const Dvector& vec); // Constructeur par copie profonde
         void display(std::ostream& str);
         unsigned int size() const; // accesseur sur la dimension
-        // remplit le tableau selon la loi uniforme [0, 1]
-        // utilise la fonction random
-        // TODO: ask teacher if it's necessary to put const at the end
-        // because we don't change pointer
+        // remplit le tableau selon la loi uniforme [0, 1]. utilise la fonction random
         void fillRandomly();
         
         // redéfinition des opérateurs
-        // accède à une valeur du tableau
-        // index commence par 0
-        // TODO: ask teacher about valgrind
+        // accède à une valeur du tableau. index commence par 0
         double& operator()(int index) const;
-        // addition par un réel
-        // on ajoute le réel à chaque valeur du tableau
+        // opération avec un réel. on transforme chaque valeur du vecteur avec le réel.
         Dvector& operator+=(double d);
+        Dvector& operator-=(double d);
+        Dvector& operator*=(double d);
+        Dvector& operator/=(double d);
+        // opération avec un vecteur. on travaille coordonnée à coordonnée des deux vecteurs de même taille.
+        Dvector& operator+=(const Dvector &Q);
+        Dvector& operator-=(const Dvector &Q);
+        
+        // operations avec réel et vecteur. on renvoie une copie.
+        // TODO: ask teacher if we should put adress (&) for the parameter
+        Dvector operator+(double d) const;
+        Dvector operator-(double d) const;
+        Dvector operator*(double d) const;
+        Dvector operator/(double d) const;
+        Dvector operator+(const Dvector &Q) const;
+        Dvector operator-(const Dvector &Q) const;
+
+        Dvector& operator-();
+        bool operator==(const Dvector &Q) const;
+        bool operator!=(const Dvector &Q) const;
+
+        void resize(unsigned int newDim, double value = 0.0);
 };
+
+// opérations externes pour pouvoir faire 3*vector.
+Dvector operator+(const double &, const Dvector &);
+// TODO: implémenter peut-etre l'opérateur - externe pour faire : 2-vector.
+Dvector operator*(const double &, const Dvector &);
 
 #endif
