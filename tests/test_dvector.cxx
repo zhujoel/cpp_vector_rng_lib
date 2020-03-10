@@ -22,7 +22,6 @@ TEST_F(DvectorTest, constructorDim){
     EXPECT_EQ(4, v.size());
 }
 
-// TODO: Tester constructeur avec une valeur
 TEST_F(DvectorTest, constructorValue){
     Dvector v(3, 2.2);
     EXPECT_EQ(2.2, v(2));
@@ -33,6 +32,15 @@ TEST_F(DvectorTest, constructorCopieDim){
     Dvector v2(v);
     EXPECT_EQ(2, v2.size());
 }
+
+TEST_F(DvectorTest, constructorAddAValue){
+    Dvector v(2, 1);
+    Dvector v1(v, 3);
+    EXPECT_EQ(3, v1.size());
+    EXPECT_EQ(1, v1(1));
+    EXPECT_EQ(3, v1(2));
+}
+
 
 TEST_F(DvectorTest, display){
     Dvector v(2, 2.5);
@@ -101,6 +109,13 @@ TEST_F(DvectorTest, operator_plus_externe_reel){
     EXPECT_EQ((5+3+v+2)(1), 13);
 }
 
+TEST_F(DvectorTest, operator_minus_externe_reel){
+    Dvector v(3, 3.0);
+    EXPECT_EQ((5-v)(1), 2);
+    EXPECT_EQ((5-v)(2), 2);
+}
+
+
 TEST_F(DvectorTest, operator_plus_vector){
     Dvector v(3, 2.0);
     Dvector v2(3, 1.0);
@@ -123,7 +138,6 @@ TEST_F(DvectorTest, operator_bool_equals){
     Dvector v1(5, 3);
     EXPECT_EQ(true, v==v1);
 }
-
 TEST_F(DvectorTest, operator_bool_not_equals){
     Dvector v(5, 3);
     Dvector v1(5, 0.5);
@@ -143,6 +157,56 @@ TEST_F(DvectorTest, method_resize_smaller){
     EXPECT_NE(v(7), 3.3);
 }
 
+TEST_F(DvectorTest, output_operator_display){
+    Dvector v(2, 4.25);
+    Dvector v1(2, 4);
+    std::stringstream str;
+    str<<v<<v1;
+    EXPECT_EQ("4.25\n4.25\n4\n4\n", str.str());
+}
+
+TEST_F(DvectorTest, output_operator_addAValue){
+    Dvector v(2, 4.25);
+    v << 3 << 2 << 5 << 6;
+    EXPECT_EQ(6, v(5));
+}
+
+TEST_F(DvectorTest, input_operator){
+    Dvector v(3);
+    std::stringstream str;
+    str<<"4.25\n4.25\n5\n";
+    str>>v;
+    EXPECT_EQ(4.25, v(1));
+    EXPECT_EQ(5, v(2));
+}
+
+TEST_F(DvectorTest, both_operator){
+    Dvector v(3, 2.5);
+    Dvector v2(3);
+    std::stringstream str;
+    str<<v;
+    str>>v2;
+    EXPECT_EQ(2.5, v2(1));
+    EXPECT_EQ(2.5, v2(2));
+}
+
+// TODO: fix le memory leak avec valgrind dû à ce test
+TEST_F(DvectorTest, operator_affectation_deepCopy){
+    Dvector v(3, 2.5);
+    Dvector v2(2, 4.25);
+    Dvector v3(99, 1.25);
+    v3 = v2 = v;
+    EXPECT_EQ(2.5, v2(0));
+    EXPECT_EQ(2.5, v3(0));
+}
+
+/*
+TEST_F(DvectorTest, operator_affect_shared){
+    Dvector v(3, 2.5);
+    v = Dvector(99, 55);
+    EXPECT_EQ(55, v(0));
+}
+*/
 int main(int argc, char** argv){
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

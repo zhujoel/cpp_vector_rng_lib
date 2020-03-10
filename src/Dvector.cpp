@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <cstring>
 
 Dvector::Dvector(){
     std::cout << "Constructeur défaut" << std::endl;
@@ -16,6 +17,16 @@ Dvector::Dvector(unsigned int dim, double value){
     for(unsigned int i = 0; i < this->dim; ++i){
         this->values[i] = value;
     }
+}
+
+Dvector::Dvector(const Dvector &P, double value){
+    std::cout << "Constructeur add a value" << std::endl;
+    this->dim = P.size()+1;
+    this->values = new double[this->dim];
+    for(unsigned int i = 0; i < P.size(); ++i){
+        this->values[i] = P(i);
+    }
+    this->values[this->dim-1] = value;
 }
 
 Dvector::Dvector(std::string filename){
@@ -67,14 +78,17 @@ Dvector::~Dvector(){
 
 Dvector::Dvector(const Dvector & vec){
     std::cout << "Constructeur par copie" << std::endl;
+    /**
     this->dim = vec.dim;
     this->values = new double[this->dim];
     for(unsigned int i = 0; i < this->dim; ++i){
         this->values[i] = vec.values[i];
     }
+    */
+   *this = vec;
 }
 
-void Dvector::display(std::ostream& str){
+void Dvector::display(std::ostream& str) const{
     for(unsigned int i = 0; i < this->dim; ++i){
         // on affiche les 20 premières decimals
         str << std::setprecision(20) << this->values[i] << std::endl;
@@ -203,6 +217,26 @@ Dvector Dvector::operator-(const Dvector &Q) const{
     return P;
 }
 
+Dvector& Dvector::operator=(const Dvector &Q){
+    if(this->dim != Q.size()){
+        this->dim = Q.size();
+        if(!this->values) delete[] this->values;
+        this->values = new double[this->dim];
+    }
+    memcpy(this->values, Q.values, (this->dim)*sizeof(double));
+    return *this;
+}
+
+Dvector& Dvector::operator=(Dvector &&Q){
+    if (this == &Q) return *this;
+    delete[] this->values;
+    this->dim = Q.size();
+    this->values = Q.values;
+    Q.dim = 0;
+    Q.values = nullptr;
+    return *this;
+}
+
 // - unaire
 Dvector& Dvector::operator-(){
     for(unsigned int i = 0; i < this->dim; ++i){
@@ -258,8 +292,37 @@ Dvector operator+(const double &d, const Dvector &Q){
     return P;
 }
 
+Dvector operator-(const double &d, const Dvector &Q){
+    Dvector P(Q);
+    P = -P;
+    P += d;
+    return P;
+}
+
 Dvector operator*(const double &d, const Dvector &Q){
     Dvector P(Q);
     P *= d;
     return P;
 }
+
+
+std::ostream & operator<<(std::ostream &output, const Dvector &P){
+    P.display(output);
+    return output;
+}
+
+
+Dvector & operator<<(Dvector &P, const double &d){
+    P = Dvector(P, d);
+    return P;
+}
+
+std::istream & operator>>(std::istream &input, Dvector &P){
+    std::string d;
+    unsigned int i = 0;
+    while(getline(input, d)){
+        P(i) = atof(d.c_str());
+        i++;
+    }
+    return input;
+} 
