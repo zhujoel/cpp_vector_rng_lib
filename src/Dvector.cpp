@@ -78,14 +78,13 @@ Dvector::~Dvector(){
 
 Dvector::Dvector(const Dvector & vec){
     std::cout << "Constructeur par copie" << std::endl;
-    /**
+
     this->dim = vec.dim;
     this->values = new double[this->dim];
     for(unsigned int i = 0; i < this->dim; ++i){
         this->values[i] = vec.values[i];
     }
-    */
-   *this = vec;
+    // *this = vec; TODO faire avec l'operateur d'accectation TP2-4/
 }
 
 void Dvector::display(std::ostream& str) const{
@@ -220,10 +219,10 @@ Dvector Dvector::operator-(const Dvector &Q) const{
 Dvector& Dvector::operator=(const Dvector &Q){
     if(this->dim != Q.size()){
         this->dim = Q.size();
-        if(!this->values) delete[] this->values;
+        if(this->values!=0) delete[] this->values;
         this->values = new double[this->dim];
     }
-    memcpy(this->values, Q.values, (this->dim)*sizeof(double));
+    memmove(this->values, Q.values, (this->dim)*sizeof(double));
     return *this;
 }
 

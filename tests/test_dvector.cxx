@@ -31,6 +31,7 @@ TEST_F(DvectorTest, constructorCopieDim){
     Dvector v(2);
     Dvector v2(v);
     EXPECT_EQ(2, v2.size());
+    EXPECT_EQ(0, v2(1));
 }
 
 TEST_F(DvectorTest, constructorAddAValue){
@@ -200,13 +201,19 @@ TEST_F(DvectorTest, operator_affectation_deepCopy){
     EXPECT_EQ(2.5, v3(0));
 }
 
-/*
 TEST_F(DvectorTest, operator_affect_shared){
     Dvector v(3, 2.5);
     v = Dvector(99, 55);
     EXPECT_EQ(55, v(0));
 }
-*/
+
+TEST_F(DvectorTest, operator_affect_double_esperluette){
+    Dvector v(3, 2.5);
+    Dvector v2(4, 5.5);
+    v = std::move(v2);
+    EXPECT_EQ(5.5, v(3));
+}
+
 int main(int argc, char** argv){
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
