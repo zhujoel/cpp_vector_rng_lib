@@ -24,4 +24,5 @@ include_directories(${gtest_SOURCE_DIR}/include)
 add_subdirectory(tests)
 
 add_test (NAME test_dvector COMMAND test_dvector)
+add_test (NAME test_GenerateurNombreAleatoire COMMAND test_GenerateurNombreAleatoire)
 
