@@ -4,3 +4,6 @@ target_link_libraries(test_dvector gtest dvector)
 add_executable(test_GenerateurParkMiller test_GenerateurParkMiller.cxx)
 target_link_libraries(test_GenerateurParkMiller gtest GenerateurParkMiller)
 
+add_executable(test_GenerateurXorshift test_GenerateurXorshift.cxx)
+target_link_libraries(test_GenerateurXorshift gtest GenerateurXorshift)
+

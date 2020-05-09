@@ -5,8 +5,8 @@
 
 class GenerateurParkMiller : public GenerateurNombreAleatoire{
     private:
-        unsigned int seed;
-        unsigned int initialSeed;
+        unsigned long int seed;
+        unsigned long int initialSeed;
         unsigned int n;
 
         unsigned int a;
@@ -15,15 +15,15 @@ class GenerateurParkMiller : public GenerateurNombreAleatoire{
         static const unsigned int r = 2836;
  
     public:
-        GenerateurParkMiller(unsigned int x0, unsigned int a=16807, unsigned int m=2147483647);
+        GenerateurParkMiller(unsigned long int x0, unsigned int a=16807, unsigned int m=2147483647);
         GenerateurParkMiller(const GenerateurParkMiller&);
         ~GenerateurParkMiller()=default;
  
         GenerateurNombreAleatoire* clone() const;
-        void set_seed(unsigned int);
-        unsigned int get_seed() const;
+        void set_seed(unsigned long int);
+        unsigned long int get_seed() const;
         void reset_seed();
-        unsigned int generate();
+        unsigned long int generate();
 
 };
 

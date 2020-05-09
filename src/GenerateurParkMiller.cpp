@@ -2,7 +2,7 @@
 
 #include "GenerateurParkMiller.h"
 
-GenerateurParkMiller::GenerateurParkMiller(unsigned int x0, unsigned int a, unsigned int m){
+GenerateurParkMiller::GenerateurParkMiller(unsigned long int x0, unsigned int a, unsigned int m){
     if (m<=0) {
         throw;
     } 
@@ -24,7 +24,7 @@ GenerateurNombreAleatoire* GenerateurParkMiller::clone() const{
     return new GenerateurParkMiller(*this);
 }
 
-unsigned int GenerateurParkMiller::generate(){
+unsigned long int GenerateurParkMiller::generate(){
     if (this->n>=this->m){
         throw;
     }
@@ -33,11 +33,11 @@ unsigned int GenerateurParkMiller::generate(){
     return this->seed;
 }
 
-void GenerateurParkMiller::set_seed(unsigned int seed){
+void GenerateurParkMiller::set_seed(unsigned long int seed){
     if (seed<=0 || seed>=m){
         throw;
     }
-    if (std::__gcd(this->m, seed)!=1){
+    if (std::__gcd((unsigned long int) this->m, seed)!=1){
         throw;
     }
     this->n = 0;
@@ -45,7 +45,7 @@ void GenerateurParkMiller::set_seed(unsigned int seed){
     this->initialSeed = seed;
 }
  
-unsigned int GenerateurParkMiller::get_seed() const{
+unsigned long int GenerateurParkMiller::get_seed() const{
     return this->seed;
 }
  
