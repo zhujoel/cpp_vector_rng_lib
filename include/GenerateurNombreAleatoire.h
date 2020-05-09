@@ -19,10 +19,10 @@ class GenerateurNombreAleatoire{
         virtual GenerateurNombreAleatoire* clone() const=0;
         unsigned int getDimension() const; // accesseur
  
-        virtual void set_seed(int)=0;
-        virtual int get_seed() const=0;
+        virtual void set_seed(unsigned int)=0;
+        virtual unsigned int get_seed() const=0;
         virtual void reset_seed()=0;
-        virtual void generate()=0;
+        virtual unsigned int generate()=0;
        
 };
  
