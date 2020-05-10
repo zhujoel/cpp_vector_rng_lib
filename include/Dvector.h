@@ -5,8 +5,14 @@
 
 /**
  * @author Philippe Morais, Joel Zhu
+ * @file Dvector.h
  */
 
+/**
+ * @class Dvector
+ * 
+ * Représente et gère les opérations sur un vecteur de réels.
+ */
 class Dvector{
     private:
         unsigned int dim; /** < dimension du vecteur */
@@ -165,10 +171,11 @@ class Dvector{
         Dvector operator-(const Dvector &Q) const;
 
         /**
-         * Affecte un vecteur par copie mémoire. Les tableaux des deux vecteurs peuvent se chevaucher, memmove est donc utilisé.
+         * Affecte un vecteur par copie mémoire. Les tableaux des deux vecteurs peuvent se chevaucher, memmove() est donc utilisé.
          * 
          * @param Q Vecteur à copier.
          * @return Pointer this modifié.
+         * @see memmove(void*, void*, size_t)
          */
         Dvector& operator=(const Dvector &Q);
         /**
