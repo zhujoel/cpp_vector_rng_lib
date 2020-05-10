@@ -23,7 +23,7 @@ add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src)
 include_directories(${gtest_SOURCE_DIR}/include)
 add_subdirectory(tests)
 
-add_test (NAME test_dvector COMMAND test_dvector)
+add_test (NAME test_Dvector COMMAND test_Dvector)
 add_test (NAME test_GenerateurParkMiller COMMAND test_GenerateurParkMiller)
 add_test (NAME test_GenerateurXorshift COMMAND test_GenerateurXorshift)
 add_test (NAME test_DistributionNormale COMMAND test_DistributionNormale)

@@ -31,7 +31,7 @@ class GenerateurXorshift : public GenerateurNombreAleatoire{
          * @param a2 Paramètre a2 du générateur.
          * @param a3 Paramètre a3 du générateur.
          */
-        GenerateurXorshift(unsigned long int, unsigned int, unsigned int, unsigned int);
+        GenerateurXorshift(unsigned int, unsigned long int, unsigned int, unsigned int, unsigned int);
         /**
          * Constructeur par copie profonde. Recopie les paramètres et la seed d'un autre générateur.
          * 

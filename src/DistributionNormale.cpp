@@ -3,14 +3,14 @@
 
 #include "DistributionNormale.h"
 
-DistributionNormale::DistributionNormale(unsigned long int dim, double mean, double var):Distribution(dim){
-    this->mean = mean;
-    this->var = var;
+DistributionNormale::DistributionNormale(unsigned int dim, double mean, double var):Distribution(dim){
+    this->mu = mean;
+    this->sigma2 = var;
 }
 
 DistributionNormale::DistributionNormale(const DistributionNormale& d):Distribution(d){
-    this->mean = mean;
-    this->var = var;
+    this->mu = d.mu;
+    this->sigma2 = d.sigma2;
 }
 
 void DistributionNormale::random_draws(){
@@ -18,11 +18,11 @@ void DistributionNormale::random_draws(){
 }
 
 double DistributionNormale::cdf(double x){
-    return erfc(-(x-this->mean)/(sqrt(this->var)*sqrt(2))) /2;
+    return erfc(-(x-this->mu)/(sqrt(this->sigma2)*sqrt(2))) /2;
 }
 
 double DistributionNormale::pdf(double x){
-    return exp(- (0.5 * (x-this->mean) * (x-this->mean) )/ this->var) / sqrt(2*M_PI*this->var);
+    return exp(- (0.5 * (x-this->mu) * (x-this->mu) )/ this->sigma2) / sqrt(2*M_PI*this->sigma2);
 }
 
 double DistributionNormale::inv_cdf(double p){

@@ -18,6 +18,7 @@ class Distribution{
         
         Dvector* vec; /** < Echantillon de la loi de probabilité */
     public:
+
         /**
          * Constructeur qui initialise l'échantillon avec une dimension.
          * 

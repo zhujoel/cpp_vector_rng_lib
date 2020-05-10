@@ -12,10 +12,11 @@ class DistributionNormaleTest: public ::testing::Test{
 };
 
 TEST_F(DistributionNormaleTest, constructorDefault){
-   /* GenerateurXorshift genXorshift(1, 21, 35, 4);
-    for(unsigned int i=0; i<20; i++){
-        std::cout<<genXorshift.generate()<<std::endl;
-    }*/
+    DistributionNormale norm(10);
+
+    
+    std::cout<<norm.mean()<<std::endl;
+    std::cout<<norm.var()<<std::endl;
 }
 
 /*

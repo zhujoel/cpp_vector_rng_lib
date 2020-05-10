@@ -2,7 +2,7 @@
 
 #include "GenerateurParkMiller.h"
 
-GenerateurParkMiller::GenerateurParkMiller(unsigned long int x0, unsigned int a, unsigned int m){
+GenerateurParkMiller::GenerateurParkMiller(unsigned int dim, unsigned long int x0, unsigned int a, unsigned int m):GenerateurNombreAleatoire(dim){
     if (m<=0) {
         throw std::domain_error("m should be greater than 0");
     } 

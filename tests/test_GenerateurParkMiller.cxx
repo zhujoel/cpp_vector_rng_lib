@@ -12,7 +12,7 @@ class GenerateurParkMillerTest: public ::testing::Test{
 };
 
 TEST_F(GenerateurParkMillerTest, constructorDefault){
-    GenerateurParkMiller genParkMiller(7);
+    GenerateurParkMiller genParkMiller(3,7);
     std::stringstream str;
     for(unsigned int i=0; i<3; i++){
         str<<genParkMiller.generate()<<std::endl;
@@ -21,7 +21,7 @@ TEST_F(GenerateurParkMillerTest, constructorDefault){
 }
 
 TEST_F(GenerateurParkMillerTest, clone){
-    GenerateurParkMiller g1(19);
+    GenerateurParkMiller g1(3,19);
     GenerateurNombreAleatoire* g2 = g1.clone();
 
     for(unsigned int i=0; i<1000; i++){

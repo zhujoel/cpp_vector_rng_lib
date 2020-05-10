@@ -1,11 +1,11 @@
-add_executable(test_dvector test_dvector.cxx)
-target_link_libraries(test_dvector gtest dvector)
+add_executable(test_Dvector test_Dvector.cxx)
+target_link_libraries(test_Dvector gtest Dvector)
 
 add_executable(test_GenerateurParkMiller test_GenerateurParkMiller.cxx)
-target_link_libraries(test_GenerateurParkMiller gtest GenerateurParkMiller)
+target_link_libraries(test_GenerateurParkMiller gtest GenerateurParkMiller GenerateurNombreAleatoire Dvector) # Attention l'ordre compte
 
 add_executable(test_GenerateurXorshift test_GenerateurXorshift.cxx)
-target_link_libraries(test_GenerateurXorshift gtest GenerateurXorshift)
+target_link_libraries(test_GenerateurXorshift gtest GenerateurXorshift GenerateurNombreAleatoire Dvector)
 
 add_executable(test_DistributionNormale test_DistributionNormale.cxx)
-target_link_libraries(test_DistributionNormale gtest DistributionNormale)
+target_link_libraries(test_DistributionNormale gtest DistributionNormale Distribution Dvector)

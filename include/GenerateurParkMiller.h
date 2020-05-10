@@ -32,7 +32,7 @@ class GenerateurParkMiller : public GenerateurNombreAleatoire{
          * @param m Paramètre m du générateur. m = 21474836 est une valeur ayant des bonnés propriétés.
          * @throw std::domain_error Si les contraintes sur les paramètres ne sont pas respectées.
          */
-        GenerateurParkMiller(unsigned long int x0, unsigned int a=16807, unsigned int m=2147483647);
+        GenerateurParkMiller(unsigned int dim, unsigned long int x0, unsigned int a=16807, unsigned int m=2147483647);
         /**
          * Constructeur par copie profonde. Recopie les paramètres et la seed d'un autre générateur.
          * 

@@ -15,10 +15,11 @@
  */
 class DistributionNormale: public Distribution{
     private:
-        double mean;
-        double var;
+        double mu;
+        double sigma2;
     public:
-        DistributionNormale(unsigned long int dim, double mean=0, double var=1);
+DistributionNormale()=default;
+        DistributionNormale(unsigned int dim, double mean=0, double var=1);
         DistributionNormale(const DistributionNormale&);
         ~DistributionNormale()=default;
 
