@@ -16,6 +16,7 @@ class Distribution{
         virtual void random_draws()=0;
  
         virtual double cdf(double) = 0;
+        virtual double pdf(double) = 0;
         double mean();
         double var();
         double stdev();
