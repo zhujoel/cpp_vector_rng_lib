@@ -84,7 +84,6 @@ Dvector::Dvector(const Dvector & vec){
     for(unsigned int i = 0; i < this->dim; ++i){
         this->values[i] = vec.values[i];
     }
-    // *this = vec; TODO faire avec l'operateur d'accectation TP2-4/
 }
 
 void Dvector::display(std::ostream& str) const{
@@ -106,8 +105,7 @@ void Dvector::fillRandomly(){
 
 double& Dvector::operator()(int index) const{
     if(index < 0 || index >= (int)this->dim){
-        // TODO: Compléter l'exception
-        throw;
+        throw std::out_of_range("index out of bounds");
     }
     return this->values[index];
 }
@@ -136,8 +134,7 @@ Dvector& Dvector::operator*=(double d){
 
 Dvector& Dvector::operator/=(double d){
     if(d == 0){
-        // TODO: compléter exception
-        throw;
+        throw std::runtime_error("math error : tried to divide by zero");
     }
     for(unsigned int i = 0; i < this->dim; ++i){
         this->values[i] /= d;
@@ -147,8 +144,7 @@ Dvector& Dvector::operator/=(double d){
 
 Dvector& Dvector::operator+=(const Dvector &Q){
     if(Q.size() != this->dim){
-        // TODO: compléter exception
-        throw;
+        throw std::logic_error("incompatible dimension");
     }
     for(unsigned int i = 0; i < this->dim; ++i){
         this->values[i] += Q(i);
@@ -158,8 +154,7 @@ Dvector& Dvector::operator+=(const Dvector &Q){
 
 Dvector& Dvector::operator-=(const Dvector &Q){
     if(Q.size() != this->dim){
-        // TODO: compléter exception
-        throw;
+        throw std::logic_error("incompatible dimension");
     }
     for(unsigned int i = 0; i < this->dim; ++i){
         this->values[i] -= Q(i);
@@ -188,8 +183,7 @@ Dvector Dvector::operator*(double d) const{
 
 Dvector Dvector::operator/(double d) const{
     if(d == 0){
-        // TODO: compléter exception 
-        throw;
+        throw std::runtime_error("math error : tried to divide by zero");
     }
     Dvector Q(*this);
     Q /= d;
@@ -198,8 +192,7 @@ Dvector Dvector::operator/(double d) const{
 
 Dvector Dvector::operator+(const Dvector &Q) const{
     if(Q.size() != this->dim){
-        // TODO: compléter exception
-        throw;
+        throw std::logic_error("incompatible dimension");
     }
     Dvector P(*this);
     P += Q;
@@ -208,8 +201,7 @@ Dvector Dvector::operator+(const Dvector &Q) const{
 
 Dvector Dvector::operator-(const Dvector &Q) const{
     if(Q.size() != this->dim){
-        // TODO: compléter exception
-        throw;
+        throw std::logic_error("incompatible dimension");
     }
     Dvector P(*this);
     P -= Q;
@@ -278,10 +270,7 @@ void Dvector::resize(unsigned int newDim, double value){
 
     } else if (this->dim > newDim) {
         this->dim = newDim;
-    } else {
-        // TODO: Compléter l'exception
-        throw;
-    }
+    } 
 }
 
 // opérateurs externes

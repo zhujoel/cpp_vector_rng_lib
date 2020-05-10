@@ -31,7 +31,7 @@ unsigned long int GenerateurXorshift::generate(){
 
 void GenerateurXorshift::set_seed(unsigned long int seed){
     if (seed<=0){
-        throw;
+        throw std::domain_error("the seed should be greater than 0");
     }
     this->seed = seed;
     this->initialSeed = seed;

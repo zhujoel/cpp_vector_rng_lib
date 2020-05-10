@@ -26,4 +26,5 @@ add_subdirectory(tests)
 add_test (NAME test_dvector COMMAND test_dvector)
 add_test (NAME test_GenerateurParkMiller COMMAND test_GenerateurParkMiller)
 add_test (NAME test_GenerateurXorshift COMMAND test_GenerateurXorshift)
+add_test (NAME test_DistributionNormale COMMAND test_DistributionNormale)
 

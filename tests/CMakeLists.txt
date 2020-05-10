@@ -7,3 +7,5 @@ target_link_libraries(test_GenerateurParkMiller gtest GenerateurParkMiller)
 add_executable(test_GenerateurXorshift test_GenerateurXorshift.cxx)
 target_link_libraries(test_GenerateurXorshift gtest GenerateurXorshift)
 
+add_executable(test_DistributionNormale test_DistributionNormale.cxx)
+target_link_libraries(test_DistributionNormale gtest DistributionNormale)
