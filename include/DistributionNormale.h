@@ -3,6 +3,16 @@
 
 #include "Distribution.h"
 
+/**
+ * @author Philippe Morais, Joel Zhu
+ * @file DistributionNormale.h
+ */
+
+/**
+ * @class DistributionNormale
+ * 
+ * Représente la loi de probabilité normale.
+ */
 class DistributionNormale: public Distribution{
     private:
         double mean;

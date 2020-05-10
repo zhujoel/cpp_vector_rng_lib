@@ -76,13 +76,13 @@ Dvector::~Dvector(){
     delete[] this->values;
 }
 
-Dvector::Dvector(const Dvector & vec){
+Dvector::Dvector(const Dvector& P){
     std::cout << "Constructeur par copie" << std::endl;
 
-    this->dim = vec.dim;
+    this->dim = P.dim;
     this->values = new double[this->dim];
     for(unsigned int i = 0; i < this->dim; ++i){
-        this->values[i] = vec.values[i];
+        this->values[i] = P.values[i];
     }
 }
 
