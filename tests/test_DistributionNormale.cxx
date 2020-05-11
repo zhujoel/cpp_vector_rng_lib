@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "DistributionNormale.h"
+
 #include <fstream>
 
 class DistributionNormaleTest: public ::testing::Test{
@@ -12,35 +13,26 @@ class DistributionNormaleTest: public ::testing::Test{
 };
 
 TEST_F(DistributionNormaleTest, constructorDefault){
-    DistributionNormale norm(1000000);
-
-    
-    std::cout<<norm.mean()<<std::endl;
-    std::cout<<norm.var()<<std::endl;
+    DistributionNormale norm(1000000, 5, 5);
+    EXPECT_NEAR(norm.mean(),5,0.01);
+    EXPECT_NEAR(norm.var(),5,0.01);
 }
 
-/*
-TEST_F(GenerateurParkMillerTest, constructorDefault){
-    GenerateurParkMiller genParkMiller(7);
-    std::stringstream str;
-    for(unsigned int i=0; i<3; i++){
-        str<<genParkMiller.generate()<<std::endl;
-    }
-    EXPECT_EQ("117649\n1977326743\n621132276\n", str.str());
+TEST_F(DistributionNormaleTest, normalcdf){
+    DistributionNormale norm(10);
+    EXPECT_NEAR(norm.cdf(-1), 0.15865, 0.0001);
+    EXPECT_NEAR(norm.cdf(0), 0.5, 0.0001);
+    EXPECT_NEAR(norm.cdf(3), 0.99865, 0.0001);
 }
 
-TEST_F(GenerateurParkMillerTest, clone){
-    GenerateurParkMiller g1(19);
-    GenerateurNombreAleatoire* g2 = g1.clone();
 
-    for(unsigned int i=0; i<1000; i++){
-        EXPECT_EQ(g1.generate(), g2->generate());
-    }
-}*/
-/*
-TEST_F(GenerateurParkMillerTest, exception){
-    GenerateurParkMiller g1(3,7,19);
-}*/
+TEST_F(DistributionNormaleTest, normalInv_cdf){
+    DistributionNormale norm(10);
+    EXPECT_NEAR(norm.inv_cdf(0.15865), -1, 0.0001);
+    EXPECT_NEAR(norm.inv_cdf(0.5), 0, 0.0001);
+    EXPECT_NEAR(norm.inv_cdf(0.99865), 3, 0.00045);
+}
+
 
 int main(int argc, char** argv){
     testing::InitGoogleTest(&argc, argv);

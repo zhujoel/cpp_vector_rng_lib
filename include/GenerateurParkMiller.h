@@ -50,7 +50,7 @@ class GenerateurParkMiller : public GenerateurNombreAleatoire{
          * 
          * @return Pointeur vers le clone du générateur. 
          */
-        GenerateurNombreAleatoire* clone() const;
+        GenerateurParkMiller* clone() const;
         
         /**
          * Modifie la seed du générateur. Initialise la seed initiale du générateur.

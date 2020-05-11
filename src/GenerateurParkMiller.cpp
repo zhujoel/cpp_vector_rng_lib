@@ -20,7 +20,7 @@ GenerateurParkMiller::GenerateurParkMiller(const GenerateurParkMiller& gen){
     set_seed(gen.get_seed());
 }
 
-GenerateurNombreAleatoire* GenerateurParkMiller::clone() const{
+GenerateurParkMiller* GenerateurParkMiller::clone() const{
     return new GenerateurParkMiller(*this);
 }
 

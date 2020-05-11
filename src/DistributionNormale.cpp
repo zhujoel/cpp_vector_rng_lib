@@ -19,6 +19,7 @@ void DistributionNormale::random_draws(){
     unsigned int n = (*U).size();
     double tmp = (*U)(n/2);
 
+    // Méthode de Box-Muller
     for(unsigned int i=0; i<n/2; i++){
         double uniform_1 = (*U)(2*i);
         double uniform_2 = (*U)(2*i+1);
@@ -26,10 +27,19 @@ void DistributionNormale::random_draws(){
         (*U)(2*i+1) = sqrt(-2.0*log(uniform_1)) * sin(2*M_PI*uniform_2);
     }
 
+    // Adaptation dans le cas où le tableau n'a pas un nombre pair d'éléments
     if (n%2!=0){
         double uniform_1 = (*U)(n-1);
         double uniform_2 = tmp;
         (*U)(n) = sqrt(-2.0*log(uniform_1)) * cos(2*M_PI*uniform_2);
+    }
+
+    // Transformation affine si la distribution n'est pas centrée réduite
+    if (this->mu!=0 || this->sigma2!=1){
+        double sigma = sqrt(this->sigma2);
+        for(unsigned int i=0; i<n; i++){
+            (*U)(i) = sigma * (*U)(i) + this->mu;
+        }
     }
 }
 

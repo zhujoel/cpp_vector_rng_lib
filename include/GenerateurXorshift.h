@@ -48,7 +48,7 @@ class GenerateurXorshift : public GenerateurNombreAleatoire{
          * 
          * @return Pointeur vers le clone du générateur. 
          */
-        GenerateurNombreAleatoire* clone() const;
+        GenerateurXorshift* clone() const;
 
         /**
          * Modifie la seed du générateur. Initialise la seed initiale du générateur.

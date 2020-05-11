@@ -34,7 +34,7 @@ class GenerateurNombreAleatoire{
         /**
          * Destructeur
          */
-        ~GenerateurNombreAleatoire()=default;
+        virtual ~GenerateurNombreAleatoire()=default;
     
         /**
          * Copie par affectation. Pas nécessaire ici.

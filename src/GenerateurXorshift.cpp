@@ -14,7 +14,7 @@ GenerateurXorshift::GenerateurXorshift(const GenerateurXorshift& gen){
     set_seed(gen.get_seed());
 }
 
-GenerateurNombreAleatoire* GenerateurXorshift::clone() const{
+GenerateurXorshift* GenerateurXorshift::clone() const{
     return new GenerateurXorshift(*this);
 }
 

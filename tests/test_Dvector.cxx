@@ -191,7 +191,6 @@ TEST_F(DvectorTest, both_operator){
     EXPECT_EQ(2.5, v2(2));
 }
 
-// TODO: fix le memory leak avec valgrind dû à ce test
 TEST_F(DvectorTest, operator_affectation_deepCopy){
     Dvector v(3, 2.5);
     Dvector v2(2, 4.25);
