@@ -49,12 +49,13 @@ TEST_F(DvectorTest, display){
     v.display(str);
     EXPECT_EQ("2.5\n2.5\n", str.str());
 }
-/** This test failed
+
 TEST_F(DvectorTest, constructorFile){
-    Dvector v("../tests_provided/test1.txt");
+    Dvector v("../provided_tests/test1.txt");
     EXPECT_EQ(10, v.size());
+    EXPECT_EQ(0.16218231, v(0));
 }
-*/
+
 TEST_F(DvectorTest, constructorFileDisplay){
     Dvector v(5, 45.23654789);
     std::ofstream output("display_output.txt");
