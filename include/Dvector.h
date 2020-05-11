@@ -66,6 +66,7 @@ class Dvector{
          * @return La dimension du vecteur.
          */
         unsigned int size() const;
+        
         /**
          * Remplit le vecteur selon un générateur aléatoire donné.
          */
