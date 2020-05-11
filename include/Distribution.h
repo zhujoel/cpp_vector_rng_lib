@@ -42,6 +42,11 @@ class Distribution{
         Distribution& operator=(const Distribution&)=delete;
 
         /**
+         * Accesseur de l'échantillon.
+         */
+        Dvector* getDistribution();
+
+        /**
          * Transforme une distribution uniforme en une autre distribution.
          */
         virtual void random_draws()=0;

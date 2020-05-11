@@ -28,6 +28,14 @@ TEST_F(GenerateurParkMillerTest, clone){
         EXPECT_EQ(g1.generate(), g2->generate());
     }
 }
+
+TEST_F(GenerateurParkMillerTest, generateDvector){
+    GenerateurParkMiller genParkMiller(3,7);
+    Dvector* dvec = genParkMiller.generateDvector();
+    std::stringstream str;
+    dvec->display(str);
+    EXPECT_EQ("117649\n1977326743\n621132276\n", str.str());
+}
 /*
 TEST_F(GenerateurParkMillerTest, exception){
     GenerateurParkMiller g1(3,7,19);

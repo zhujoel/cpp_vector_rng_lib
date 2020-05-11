@@ -4,6 +4,7 @@
 
 Distribution::Distribution(unsigned int dim){
     this->vec = new Dvector(dim);
+    this->vec->fillRandomly();
 }
 
 Distribution::Distribution(const Distribution& d){
@@ -12,6 +13,10 @@ Distribution::Distribution(const Distribution& d){
 
 Distribution::~Distribution(){
     delete this->vec;
+}
+
+Dvector* Distribution::getDistribution(){
+    return this->vec;
 }
 
 double Distribution::mean(){

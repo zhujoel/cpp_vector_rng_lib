@@ -2,6 +2,7 @@
 #define GENERATEURNOMBREALEATOIRE_H
 
 #include <iostream>
+#include "Dvector.h"
 
 /**
  * @author Philippe Morais, Joel Zhu
@@ -75,6 +76,14 @@ class GenerateurNombreAleatoire{
          * @return La prochaine valeur du générateur.
          */
         virtual unsigned long int generate()=0;
+        /**
+         * Crée un Dvector de taille dimension rempli de nombres aléatoires.
+         * 
+         * @return Dvector.
+         */
+        Dvector* generateDvector();
+	
+
        
 };
  

@@ -12,7 +12,7 @@ class DistributionNormaleTest: public ::testing::Test{
 };
 
 TEST_F(DistributionNormaleTest, constructorDefault){
-    DistributionNormale norm(10);
+    DistributionNormale norm(1000000);
 
     
     std::cout<<norm.mean()<<std::endl;

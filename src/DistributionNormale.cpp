@@ -6,6 +6,7 @@
 DistributionNormale::DistributionNormale(unsigned int dim, double mean, double var):Distribution(dim){
     this->mu = mean;
     this->sigma2 = var;
+    this->random_draws();
 }
 
 DistributionNormale::DistributionNormale(const DistributionNormale& d):Distribution(d){
@@ -14,7 +15,22 @@ DistributionNormale::DistributionNormale(const DistributionNormale& d):Distribut
 }
 
 void DistributionNormale::random_draws(){
-    //this->vec.fillRandomly(); TODO
+    Dvector* U = this->getDistribution();
+    unsigned int n = (*U).size();
+    double tmp = (*U)(n/2);
+
+    for(unsigned int i=0; i<n/2; i++){
+        double uniform_1 = (*U)(2*i);
+        double uniform_2 = (*U)(2*i+1);
+        (*U)(2*i) = sqrt(-2.0*log(uniform_1)) * cos(2*M_PI*uniform_2);
+        (*U)(2*i+1) = sqrt(-2.0*log(uniform_1)) * sin(2*M_PI*uniform_2);
+    }
+
+    if (n%2!=0){
+        double uniform_1 = (*U)(n-1);
+        double uniform_2 = tmp;
+        (*U)(n) = sqrt(-2.0*log(uniform_1)) * cos(2*M_PI*uniform_2);
+    }
 }
 
 double DistributionNormale::cdf(double x){

@@ -23,7 +23,7 @@ DistributionNormale()=default;
         DistributionNormale(const DistributionNormale&);
         ~DistributionNormale()=default;
 
-        void random_draws();
+        void random_draws(); //Utilise la transformation de Box-Muller
 
         double cdf(double);
         double pdf(double);

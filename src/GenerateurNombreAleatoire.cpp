@@ -9,3 +9,11 @@ GenerateurNombreAleatoire::GenerateurNombreAleatoire(unsigned int dim){
 unsigned int GenerateurNombreAleatoire::getDimension() const{
     return this->dimension;
 }
+
+Dvector* GenerateurNombreAleatoire::generateDvector(){
+    Dvector* dvec = new Dvector(this->dimension);
+    for(unsigned int i=0; i<this->dimension; i++){
+        (*dvec)(i) = this->generate();
+    }
+    return dvec;
+}

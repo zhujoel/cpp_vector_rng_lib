@@ -39,6 +39,7 @@ class GenerateurParkMiller : public GenerateurNombreAleatoire{
          * @param gen Générateur à recopier.
          */
         GenerateurParkMiller(const GenerateurParkMiller&);
+
         /**
          * Destructeur.
          */
