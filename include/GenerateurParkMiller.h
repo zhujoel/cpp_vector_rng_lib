@@ -27,6 +27,7 @@ class GenerateurParkMiller : public GenerateurNombreAleatoire{
         /**
          * Constructeur qui initialise la seed du générateur et les valeurs des paramètres.
          * 
+         * @param dim Dimension du générateur.
          * @param x0 Seed initiale du générateur.
          * @param a Paramètre a du générateur. a = 16807 est une valeur ayant des bonnes propriétés.
          * @param m Paramètre m du générateur. m = 21474836 est une valeur ayant des bonnés propriétés.

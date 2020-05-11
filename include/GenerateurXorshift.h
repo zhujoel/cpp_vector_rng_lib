@@ -26,6 +26,7 @@ class GenerateurXorshift : public GenerateurNombreAleatoire{
         /**
          * Constructeur qui initialise la seed du générateur et les valeurs des paramètres.
          * 
+         * @param dim Dimension du générateur.
          * @param x0 Seed initiale du générateur.
          * @param a1 Paramètre a1 du générateur.
          * @param a2 Paramètre a2 du générateur.
