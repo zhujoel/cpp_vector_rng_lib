@@ -1,8 +1,10 @@
-#include "Dvector.h"
 #include <fstream>
 #include <sstream>
 #include <iomanip>
 #include <cstring>
+
+#include "Dvector.h"
+#include "GenerateurParkMiller.h"
 
 Dvector::Dvector(){
     std::cout << "Constructeur défaut" << std::endl;
@@ -98,8 +100,11 @@ unsigned int Dvector::size() const{
 }
 
 void Dvector::fillRandomly(){
+    // Utilisation la méthode de Park Miller
+    GenerateurParkMiller g(1,17);
     for(unsigned int i = 0; i < this->dim; ++i){
-        this->values[i] = ((double)rand() / (RAND_MAX));
+        //this->values[i] = ((double)rand() / (RAND_MAX)); rand de c non déterministe
+        this->values[i] =  ((double) g.generate() / 2147483647); //rand déterministe
     }
 }
 

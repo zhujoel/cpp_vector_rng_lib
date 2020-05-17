@@ -68,13 +68,14 @@ TEST_F(GenerateurXorshiftTest, generateDvector){
 /*
 TEST_F(GenerateurXorshiftTest, performance){
     auto t1 = std::chrono::high_resolution_clock::now();
-    GenerateurXorshift genXorshift(100000000, 1, 21, 35, 4);
+    GenerateurXorshift genXorshift(10000000, 1, 17, 31, 8);
     genXorshift.generateDvector();
     auto t2 = std::chrono::high_resolution_clock::now();
 
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2-t1).count();
-    std::cout<<duration<<std::endl;
-}*/
+    std::cout<<"Durée pour la génération (microseconds) : "<<duration<<std::endl;
+}
+*/
 
 int main(int argc, char** argv){
     testing::InitGoogleTest(&argc, argv);

@@ -2,6 +2,8 @@
 #include "Dvector.h"
 #include <fstream>
 
+#include <chrono>
+
 class DvectorTest: public ::testing::Test{
     protected:
         virtual void SetUp(){
@@ -42,6 +44,10 @@ TEST_F(DvectorTest, constructorAddAValue){
     EXPECT_EQ(3, v1(2));
 }
 
+TEST_F(DvectorTest, affectation_construction){
+    Dvector v = Dvector(99, 55);
+    EXPECT_EQ(55, v(59));
+}
 
 TEST_F(DvectorTest, display){
     Dvector v(2, 2.5);
@@ -201,7 +207,7 @@ TEST_F(DvectorTest, operator_affectation_deepCopy){
     EXPECT_EQ(2.5, v3(0));
 }
 
-TEST_F(DvectorTest, operator_affect_shared){
+TEST_F(DvectorTest, operator_affect){
     Dvector v(3, 2.5);
     v = Dvector(99, 55);
     EXPECT_EQ(55, v(0));
@@ -213,6 +219,21 @@ TEST_F(DvectorTest, operator_affect_double_esperluette){
     v = std::move(v2);
     EXPECT_EQ(5.5, v(3));
 }
+
+/*
+TEST_F(DvectorTest, performance_operateur_affectation){
+  
+    Dvector v(50000000,3.14);
+    Dvector v2;
+
+    auto t1 = std::chrono::high_resolution_clock::now();
+    v2 = v;
+    auto t2 = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2-t1).count();
+    std::cout<<"Durée de l'affectation (microseconds) : "<<duration<<std::endl;
+}
+*/
 
 int main(int argc, char** argv){
     testing::InitGoogleTest(&argc, argv);

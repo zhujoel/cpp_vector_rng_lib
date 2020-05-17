@@ -64,15 +64,16 @@ TEST_F(GenerateurParkMillerTest, generateDvector){
     EXPECT_EQ("117649\n1977326743\n621132276\n", str.str());
     delete dvec;
 }
+
 /*
 TEST_F(GenerateurParkMillerTest, performance){
     auto t1 = std::chrono::high_resolution_clock::now();
-    GenerateurParkMiller genParkMiller(100000000,19);
+    GenerateurParkMiller genParkMiller(10000000,23671);
     genParkMiller.generateDvector();
     auto t2 = std::chrono::high_resolution_clock::now();
 
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2-t1).count();
-    std::cout<<duration<<std::endl;
+    std::cout<<"Durée pour la génération (microseconds) : "<<duration<<std::endl;
 }*/
 
 int main(int argc, char** argv){
