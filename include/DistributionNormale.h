@@ -31,7 +31,7 @@ DistributionNormale()=default;
         /**
          * Constructeur par copie profonde. Copie l'échantillon et les paramètres.
          * 
-         * @param dis Distribution à copier.
+         * @param d Distribution à copier.
          */
         DistributionNormale(const DistributionNormale&);
         /**
@@ -63,7 +63,7 @@ DistributionNormale()=default;
          * @param p Paramètre p d'entré.
          * @return La valeur x associée.
          */
-	    double inv_cdf(double);
+	double inv_cdf(double);
 };
 
 /**

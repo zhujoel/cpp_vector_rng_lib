@@ -59,7 +59,7 @@ class GenerateurNombreAleatoire{
          * 
          * @param seed Seed du générateur.
          */
-        virtual void set_seed(unsigned long int)=0;
+        virtual void set_seed(unsigned long int seed)=0;
         /**
          * Accesseur sur la seed du générateur.
          * 

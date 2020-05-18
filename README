@@ -1,0 +1,14 @@
+Ensimag 2A TP MP - MORAIS Philippe & ZHU Joël
+=============================================
+
+- docs: documentation doxygen du projet. Point d'entrée: ./docs/html/index.html
+
+- include: contient les fichiers d'en-tête
+
+- src: contient les fichiers sources
+
+- tests: répertoire gtest
+
+
+- Rapport.pdf: compte-rendu répondant aux questions de l'énoncé
+

@@ -28,7 +28,7 @@ class Distribution{
         /**
          * Constructeur par copie profonde. Copie l'échantillon.
          * 
-         * @param dis Distribution à copier.
+         * @param d Distribution à copier.
          */
         Distribution(const Distribution&);
         /**
@@ -57,7 +57,7 @@ class Distribution{
          * @param x Valeur x d'entrée
          * @return Probabilité associée.
          */
-        virtual double cdf(double) = 0;
+        virtual double cdf(double x) = 0;
 
         /**
          * Calcule la densité de probabilité.
@@ -65,7 +65,7 @@ class Distribution{
          * @param x Valeur x d'entrée
          * @return Densité de probabilité associée.
          */
-        virtual double pdf(double) = 0;
+        virtual double pdf(double x) = 0;
 
         /**
          * Calcule la moyenne empirique.
@@ -94,7 +94,7 @@ class Distribution{
          * @param p Paramètre p d'entré.
          * @return La valeur x associée.
          */
-        virtual double inv_cdf(double) = 0;
+        virtual double inv_cdf(double p) = 0;
  
 };
  

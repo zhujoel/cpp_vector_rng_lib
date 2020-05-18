@@ -57,9 +57,11 @@ TEST_F(DvectorTest, display){
 }
 
 TEST_F(DvectorTest, constructorFile){
-    Dvector v("../provided_tests/test1.txt");
+    Dvector v("../tests/provided_tests/test1.txt");
     EXPECT_EQ(10, v.size());
     EXPECT_EQ(0.16218231, v(0));
+    Dvector v1("../tests/provided_tests/test2.txt");
+    EXPECT_EQ(0.73794075, v1(2));
 }
 
 TEST_F(DvectorTest, constructorFileDisplay){
