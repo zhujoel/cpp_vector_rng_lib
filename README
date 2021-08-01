@@ -1,6 +1,8 @@
 Ensimag 2A TP MP - MORAIS Philippe & ZHU Joël
 =============================================
 
+Implementing dynamic Vector and RNG libraries from scrach. 2020.
+
 - docs: documentation doxygen du projet. Point d'entrée: ./docs/html/index.html
 
 - include: contient les fichiers d'en-tête
